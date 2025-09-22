@@ -1,0 +1,29 @@
+backend:
+  name: git-gateway
+  branch: main
+local_backend: true
+media_folder: "assets/images"
+public_folder: "/assets/images"
+collections:
+  - name: "investments"
+    label: "Inwestycje"
+    folder: "_investments"
+    create: true
+    slug: "{{slug}}"
+    fields:
+      - { label: "Tytuł Inwestycji", name: "title", widget: "string" }
+      - { label: "Lokalizacja", name: "location", widget: "string" }
+      - { label: "Status", name: "status", widget: "select", options: ["W realizacji", "Zrealizowane"] }
+      - { label: "Zdjęcie główne", name: "image", widget: "image" }
+      - { label: "Krótki opis (na listę)", name: "description", widget: "text" }
+      - { label: "Termin oddania", name: "deadline", widget: "string", required: false }
+      - { label: "Pełny opis (na podstronę)", name: "body", widget: "markdown" }
+  - name: "news"
+    label: "Nowości"
+    folder: "_news"
+    create: true
+    slug: "{{year}}-{{month}}-{{day}}-{{slug}}"
+    fields:
+      - { label: "Tytuł", name: "title", widget: "string" }
+      - { label: "Data publikacji", name: "date", widget: "datetime" }
+      - { label: "Treść aktualności", name: "body", widget: "markdown" }

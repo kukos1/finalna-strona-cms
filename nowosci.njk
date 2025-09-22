@@ -1,0 +1,22 @@
+---
+layout: layout.njk
+title: Nowości
+permalink: /nowosci/index.html
+---
+<section class="page-header">
+    <div class="container"><h1>Nowości i Aktualności</h1></div>
+</section>
+<section>
+    <div class="container" style="max-width: 900px;">
+        {%- for item in collections.news | reverse -%}
+        <div class="news-item">
+            <div class="news-icon"><i class="fas fa-bullhorn"></i></div>
+            <div class="news-content">
+                <p><strong>{{ item.date | dateDay }} {{ item.date | dateMonth }} {% year %}</strong></p>
+                <h4>{{ item.data.title }}</h4>
+                {{ item.templateContent | safe }}
+            </div>
+        </div>
+        {%- endfor -%}
+    </div>
+</section>

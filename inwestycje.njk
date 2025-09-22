@@ -1,0 +1,48 @@
+---
+layout: layout.njk
+title: Inwestycje
+permalink: /inwestycje/index.html
+---
+<section class="page-header">
+    <div class="container"><h1>Nasze Inwestycje</h1></div>
+</section>
+<section id="current-investments">
+    <div class="container">
+        <h2>Projekty w Realizacji</h2>
+        <div class="investment-grid">
+            {%- for item in collections.investments | reverse -%}
+                {% if item.data.status == "W realizacji" %}
+                <div class="investment-card">
+                    <img src="{{ item.data.image }}" alt="{{ item.data.title }}">
+                    <div class="investment-card-content">
+                        <h3>{{ item.data.title }}</h3>
+                        <p class="location"><i class="fas fa-map-marked-alt"></i> {{ item.data.location }}</p>
+                        <p>{{ item.data.description }}</p>
+                        <a href="{{ item.url }}" class="btn">Więcej szczegółów</a>
+                    </div>
+                </div>
+                {% endif %}
+            {%- endfor -%}
+        </div>
+    </div>
+</section>
+<section id="completed-investments" style="background-color: var(--light-gray-color);">
+    <div class="container">
+        <h2>Projekty Zrealizowane</h2>
+        <div class="investment-grid">
+            {%- for item in collections.investments | reverse -%}
+                {% if item.data.status == "Zrealizowane" %}
+                <div class="investment-card completed">
+                    <img src="{{ item.data.image }}" alt="{{ item.data.title }}">
+                    <div class="investment-card-content">
+                        <h3>{{ item.data.title }}</h3>
+                        <p class="location"><i class="fas fa-map-marked-alt"></i> {{ item.data.location }}</p>
+                        <p>{{ item.data.description }}</p>
+                        <a href="{{ item.url }}" class="btn">Zobacz projekt</a>
+                    </div>
+                </div>
+                {% endif %}
+            {%- endfor -%}
+        </div>
+    </div>
+</section>

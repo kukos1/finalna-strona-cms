@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Strona Główna | PAWEŁ SOŁDAŃSKI</title>
+    <meta name="description" content="Firma budowlana Paweł Sołdański - realizujemy nowoczesne inwestycje mieszkaniowe i komercyjne.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <style>
+        :root {
+            --primary-color: #0a2342; --secondary-color: #2ca58d; --light-gray-color: #f4f4f4;
+            --dark-gray-color: #333; --white-color: #ffffff; --font-family: 'Poppins', sans-serif;
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+        body { font-family: var(--font-family); line-height: 1.6; color: var(--dark-gray-color); background-color: var(--white-color); }
+        .container { max-width: 1200px; margin: auto; padding: 0 2rem; }
+        h1, h2, h3, h4 { font-weight: 600; color: var(--primary-color); }
+        h2 { font-size: 2.5rem; text-align: center; margin-bottom: 1rem; }
+        section { padding: 4rem 0; }
+        .btn { display: inline-block; padding: 12px 28px; background: var(--secondary-color); color: var(--white-color); text-decoration: none; border-radius: 5px; font-weight: 600; transition: transform 0.3s ease, background-color 0.3s ease; border: none; cursor: pointer; }
+        .btn:hover { background-color: #248b75; transform: translateY(-3px); }
+        #main-header { background: var(--white-color); padding: 1rem 0; position: fixed; width: 100%; top: 0; z-index: 1000; box-shadow: 0 2px 10px rgba(0,0,0,0.1); }
+        #main-header .container { display: flex; justify-content: space-between; align-items: center; }
+        #logo { font-size: 1.5rem; font-weight: 700; color: var(--primary-color); text-decoration: none; }
+        #main-nav ul { list-style: none; display: flex; }
+        #main-nav ul li { margin-left: 2rem; }
+        #main-nav ul li a { text-decoration: none; color: var(--primary-color); font-weight: 600; position: relative; padding-bottom: 5px; }
+        #main-nav ul li a::after { content: ''; position: absolute; width: 0; height: 2px; bottom: 0; left: 0; background-color: var(--secondary-color); transition: width 0.3s ease; }
+        #main-nav ul li a:hover::after { width: 100%; }
+        #hero { background: linear-gradient(rgba(10, 35, 66, 0.7), rgba(10, 35, 66, 0.7)), url('/assets/images/hero.jpeg') no-repeat center center/cover; height: 100vh; color: var(--white-color); display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; padding: 0 1rem; }
+        #hero h1 { font-size: 3.5rem; margin-bottom: 1rem; color: var(--white-color); }
+        #hero p { font-size: 1.2rem; margin-bottom: 2rem; max-width: 600px; }
+        #about { background: var(--light-gray-color); }
+        #about .about-content { display: flex; gap: 2rem; align-items: center; }
+        #about .about-text { flex: 1; }
+        #about .about-image { flex: 1; }
+        #about .about-image img { width: 100%; border-radius: 10px; box-shadow: 0 4px 15px rgba(0,0,0,0.1); }
+        .investment-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem; margin-top: 2rem; }
+        .investment-card { background: var(--white-color); border-radius: 10px; box-shadow: 0 4px 15px rgba(0,0,0,0.1); overflow: hidden; transition: transform 0.3s ease, box-shadow 0.3s ease; }
+        .investment-card:hover { transform: translateY(-10px); box-shadow: 0 8px 25px rgba(0,0,0,0.15); }
+        .investment-card img { width: 100%; height: 200px; object-fit: cover; }
+        .investment-card-content { padding: 1.5rem; }
+        .investment-card-content h3 { margin-bottom: 0.5rem; }
+        .investment-card-content p { font-size: 0.9rem; margin-bottom: 1rem; }
+        .investment-card-content .location { color: var(--dark-gray-color); font-weight: 600; }
+        .investment-card-content .location i { color: var(--secondary-color); margin-right: 5px; }
+        .investment-card.completed img { filter: grayscale(80%); }
+        .news-item { display: flex; gap: 2rem; margin-bottom: 2rem; background: var(--white-color); padding: 1.5rem; border-radius: 10px; box-shadow: 0 4px 15px rgba(0,0,0,0.05); }
+        .news-icon { font-size: 2.5rem; color: var(--secondary-color); flex-shrink: 0; }
+        #contact .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; margin-top: 3rem; }
+        #contact form { display: flex; flex-direction: column; }
+        #contact form input, #contact form textarea { width: 100%; padding: 1rem; margin-bottom: 1rem; border: 1px solid #ccc; border-radius: 5px; font-family: var(--font-family); }
+        #contact form input:focus, #contact form textarea:focus { outline: none; border-color: var(--secondary-color); }
+        #contact .contact-info ul { list-style: none; }
+        #contact .contact-info li { font-size: 1.1rem; margin-bottom: 1.5rem; display: flex; align-items: center; }
+        #contact .contact-info i { font-size: 1.5rem; color: var(--secondary-color); margin-right: 1.5rem; width: 30px; }
+        #main-footer { background: var(--primary-color); color: var(--white-color); text-align: center; padding: 2rem 0; }
+        .page-header { background: var(--primary-color); color: var(--white-color); padding: 3rem 0; text-align: center; margin-top: 80px; }
+        .page-header h1 { color: var(--white-color); }
+        @media (max-width: 768px) {
+            h2 { font-size: 2rem; }
+            #main-header { position: relative; }
+            #main-header .container { flex-direction: column; }
+            #main-nav ul { margin-top: 1rem; flex-wrap: wrap; justify-content: center; }
+            #main-nav ul li { margin: 0.5rem; }
+            #hero { padding-top: 0; }
+            #hero h1 { font-size: 2.5rem; }
+            #about .about-content { flex-direction: column; }
+            .news-item { flex-direction: column; text-align: center; }
+            #contact .contact-grid { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+    <header id="main-header">
+        <div class="container">
+            <a href="/" id="logo">PAWEŁ SOŁDAŃSKI</a>
+            <nav id="main-nav">
+                <ul>
+                    <li><a href="/">Strona Główna</a></li>
+                    <li><a href="/o-nas/">O nas</a></li>
+                    <li><a href="/inwestycje/">Inwestycje</a></li>
+                    <li><a href="/nowosci/">Nowości</a></li>
+                    <li><a href="/kontakt/">Kontakt</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+    <main>
+        <section id="hero">
+    <h1>Budujemy Przyszłość, Tworzymy Przestrzeń</h1>
+    <p>Specjalizujemy się w realizacji nowoczesnych inwestycji, które łączą innowacyjność, funkcjonalność i najwyższą jakość wykonania.</p>
+    <a href="/inwestycje/" class="btn">Zobacz nasze inwestycje</a>
+</section>
+<section id="about">
+    <div class="container">
+        <div class="about-content">
+            <div class="about-text">
+                <h3>Doświadczenie i Pasja w Budownictwie</h3>
+                <p>Firma PAWEŁ SOŁDAŃSKI powstała z pasji do tworzenia wyjątkowych miejsc do życia i pracy. Od lat działamy na rynku budowlanym, zdobywając cenne doświadczenie i zaufanie Klientów.</p>
+                <a href="/o-nas/" class="btn">Dowiedz się więcej</a>
+            </div>
+            <div class="about-image">
+                <img src="/assets/images/about.jpeg" alt="Zespół firmy dyskutujący nad projektem">
+            </div>
+        </div>
+    </div>
+</section>
+    </main>
+    <footer id="main-footer">
+        <p>&copy; 2025 PAWEŁ SOŁDAŃSKI. Wszelkie prawa zastrzeżone.</p>
+    </footer>
+</body>
+</html>
